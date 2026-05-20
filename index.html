@@ -1,65 +1,389 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #333;
-        }
-        h3 {
-            color: #666;
-        }
-        p {
-            color: #555;
-            line-height: 1.6;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        li img {
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
-        }
-        footer {
-            margin-top: 20px;
-            padding-top: 10px;
-            border-top: 1px solid #ccc;
-            text-align: center;
-            color: #777;
-        }
-    </style>
-    <h1>MATTOS APPAREL</h1>
-    <h3>seu esporte, nosso compromisso</h3>
-    <p>Mattos Apparel é uma marca de equipamentos voltada para alta performance no esporte, com foco em roupas e acessórios para atletas de diversas modalidades. A marca é conhecida por sua qualidade, inovação e design moderno, oferecendo produtos que atendem às necessidades dos atletas mais exigentes.
-        <br> Com uma linha d    e roupas técnicas, calçados esportivos e acessórios, a Mattos Apparel busca proporcionar conforto, durabilidade e estilo para os praticantes de esportes, desde corredores e ciclistas até praticantes de esportes de equipe e atividades ao ar livre.</p>
-
-    <img src="cinturão.jpg" alt="Mattos Apparel">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mattos Apparel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    /* ── reset & tokens ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    :root {
+      --black:   #0a0a0a;
+      --white:   #f5f3ef;
+      --accent:  #c8ff00;
+      --mid:     #1c1c1c;
+      --muted:   #6b6b6b;
+      --border:  #2a2a2a;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+ 
+    /* ── base ── */
+    html { scroll-behavior: smooth; }
+ 
+    body {
+      font-family: var(--font-body);
+      background-color: var(--black);
+      color: var(--white);
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+ 
+    /* ── hero header ── */
+    header {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 4rem 5vw 3.5rem;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    /* animated diagonal stripe background */
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          -55deg,
+          transparent,
+          transparent 80px,
+          rgba(200,255,0,0.03) 80px,
+          rgba(200,255,0,0.03) 81px
+        );
+      animation: drift 18s linear infinite;
+    }
+ 
+    @keyframes drift {
+      from { background-position: 0 0; }
+      to   { background-position: 200px 200px; }
+    }
+ 
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp .6s .1s forwards;
+    }
+ 
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 14vw, 13rem);
+      line-height: .92;
+      letter-spacing: .02em;
+      color: var(--white);
+      opacity: 0;
+      animation: fadeUp .7s .25s forwards;
+    }
+ 
+    h1 span {
+      color: var(--accent);
+      display: block;
+    }
+ 
+    .hero-tagline {
+      font-size: clamp(.85rem, 1.3vw, 1.05rem);
+      color: var(--muted);
+      margin-top: 1.8rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp .7s .45s forwards;
+    }
+ 
+    /* hero image strip */
+    .hero-strip {
+      position: absolute;
+      top: 0; right: 0;
+      width: clamp(220px, 38%, 520px);
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: .18;
+      filter: grayscale(1) contrast(1.2);
+    }
+ 
+    /* ── main container ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 5vw;
+    }
+ 
+    /* ── about section ── */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding: 6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .about-left h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: .03em;
+      margin-bottom: 1.5rem;
+    }
+ 
+    .about-left h2 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+ 
+    .about-right p {
+      color: #aaa;
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+ 
+    /* ── products section ── */
+    .products-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: .03em;
+      padding: 5rem 0 2.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+ 
+    .products-title span { color: var(--accent); }
+ 
+    ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      margin-bottom: 5rem;
+    }
+ 
+    li a {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 2rem 1.5rem;
+      background: var(--mid);
+      text-decoration: none;
+      color: var(--white);
+      border: 1px solid var(--border);
+      transition: background .25s, border-color .25s, transform .25s;
+      position: relative;
+      overflow: hidden;
+    }
+ 
+    li a::after {
+      content: '→';
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      font-size: 1.2rem;
+      color: var(--accent);
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity .25s, transform .25s;
+    }
+ 
+    li a:hover {
+      background: #1f1f1f;
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+ 
+    li a:hover::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+ 
+    li img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(.4);
+      transition: filter .3s;
+    }
+ 
+    li a:hover img { filter: grayscale(0); }
+ 
+    .product-label {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+ 
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      letter-spacing: .04em;
+      line-height: 1.1;
+    }
+ 
+    /* ── commitment section ── */
+    .commitment {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+ 
+    .commitment-number {
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 10vw, 9rem);
+      color: var(--border);
+      line-height: 1;
+      user-select: none;
+    }
+ 
+    .commitment h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      letter-spacing: .03em;
+      margin-bottom: 1rem;
+    }
+ 
+    .commitment h3 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+ 
+    .commitment p {
+      color: #999;
+      max-width: 52ch;
+      font-size: .98rem;
+      line-height: 1.8;
+    }
+ 
+    /* ── footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+ 
+    footer p {
+      font-size: .8rem;
+      color: var(--muted);
+      letter-spacing: .04em;
+    }
+ 
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: .04em;
+      transition: opacity .2s;
+    }
+ 
+    footer a:hover { opacity: .7; }
+ 
+    /* ── animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+ 
+    /* ── responsive ── */
+    @media (max-width: 720px) {
+      .about { grid-template-columns: 1fr; gap: 2rem; }
+      ul { grid-template-columns: 1fr; }
+      .commitment { grid-template-columns: 1fr; gap: 1rem; }
+      .commitment-number { font-size: 5rem; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+ 
+  <!-- ── HERO ── -->
+  <header>
+    <img class="hero-strip" src="cinturão.jpg" alt="">
+    <p class="hero-eyebrow">Est. 2026 — Porto Alegre, BR</p>
+    <h1>MATTOS<span>APPAREL</span></h1>
+    <p class="hero-tagline">Seu esporte, nosso compromisso</p>
+  </header>
+ 
+  <main>
+ 
+    <!-- ── ABOUT ── -->
+    <section class="about">
+      <div class="about-left">
+        <h2>FEITO PARA<br>QUEM <em>COMPETE</em></h2>
+      </div>
+      <div class="about-right">
+        <p>Mattos Apparel é uma marca de equipamentos voltada para alta performance no esporte, com foco em roupas e acessórios para atletas de diversas modalidades. A marca é conhecida por sua qualidade, inovação e design moderno, oferecendo produtos que atendem às necessidades dos atletas mais exigentes.</p>
+        <p>Com uma linha de roupas técnicas, calçados esportivos e acessórios, a Mattos Apparel busca proporcionar conforto, durabilidade e estilo para os praticantes de esportes, desde corredores e ciclistas até praticantes de esportes de equipe e atividades ao ar livre.</p>
+      </div>
+    </section>
+ 
+    <!-- ── PRODUCTS ── -->
+    <h2 class="products-title">NOSSOS <span>PRODUTOS</span></h2>
+ 
     <ul>
-      <a href="singlet.html"><li><img src="singlet.jpg" alt="Mattos Apparel"> Roupas técnicas para alta performance</li></a>
-        <a href="calçados.html"><li><img src="sapatilha.jpg" alt="Mattos Apparel"> Calçados esportivos inovadores</li></a>
-        <a href="products.jpg"><li><img src="products.jpg" alt="Mattos Apparel"> Acessórios para atletas de diversas modalidades</li></a>
+      <li>
+        <a href="singlet.html">
+          <img src="singlet.jpg" alt="Roupas técnicas Mattos Apparel">
+          <span class="product-label">Categoria 01</span>
+          <span class="product-name">ROUPAS TÉCNICAS</span>
+        </a>
+      </li>
+      <li>
+        <a href="calçados.html">
+          <img src="sapatilha.jpg" alt="Calçados esportivos Mattos Apparel">
+          <span class="product-label">Categoria 02</span>
+          <span class="product-name">CALÇADOS ESPORTIVOS</span>
+        </a>
+      </li>
+      <li>
+        <a href="products.html">
+          <img src="products.jpg" alt="Acessórios Mattos Apparel">
+          <span class="product-label">Categoria 03</span>
+          <span class="product-name">ACESSÓRIOS</span>
+        </a>
+      </li>
     </ul>
-    <h2>Compromisso com a qualidade e inovação</h2>
-    <p>A Mattos Apparel se destaca por seu compromisso com a qualidade e inovação, investindo constantemente em pesquisa e desenvolvimento para oferecer produtos de excelência.</p>
-<footer>
-    <p>© 2026 Mattos Apparel. Todos os direitos reservados. por manoel mattos e bernardo emanuel libardi</p>
-<p>Contato: <a href="mailto:manoel.mattos010@gmail.com">contato@mattosapparel.com</a></p>
-</footer>
+ 
+    <!-- ── COMMITMENT ── -->
+    <section class="commitment">
+      <div class="commitment-number">01</div>
+      <div>
+        <h3>COMPROMISSO COM<br><em>QUALIDADE</em> E INOVAÇÃO</h3>
+        <p>A Mattos Apparel se destaca por seu compromisso com a qualidade e inovação, investindo constantemente em pesquisa e desenvolvimento para oferecer produtos de excelência.</p>
+      </div>
+    </section>
+ 
+  </main>
+ 
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>© 2026 Mattos Apparel. Todos os direitos reservados.<br>por Manoel Mattos e Bernardo Emanuel Libardi</p>
+    <p>Contato: <a href="mailto:manoel.mattos010@gmail.com">contato@mattosapparel.com</a></p>
+  </footer>
+ 
 </body>
 </html>
