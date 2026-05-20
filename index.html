@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
   <style>
-    /* ── reset & tokens ── */
+   
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
  
     :root {
@@ -23,7 +23,7 @@
       --font-body:    'DM Sans', sans-serif;
     }
  
-    /* ── base ── */
+   
     html { scroll-behavior: smooth; }
  
     body {
@@ -35,7 +35,7 @@
       font-weight: 300;
     }
  
-    /* ── hero header ── */
+    
     header {
       position: relative;
       min-height: 100vh;
@@ -47,7 +47,7 @@
       border-bottom: 1px solid var(--border);
     }
  
-    /* animated diagonal stripe background */
+    
     header::before {
       content: '';
       position: absolute;
@@ -105,7 +105,7 @@
       animation: fadeUp .7s .45s forwards;
     }
  
-    /* hero image strip */
+  
     .hero-strip {
       position: absolute;
       top: 0; right: 0;
@@ -117,14 +117,14 @@
       filter: grayscale(1) contrast(1.2);
     }
  
-    /* ── main container ── */
+    
     main {
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 5vw;
     }
  
-    /* ── about section ── */
+    
     .about {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -153,7 +153,7 @@
       margin-bottom: 1.2rem;
     }
  
-    /* ── products section ── */
+   
     .products-title {
       font-family: var(--font-display);
       font-size: clamp(2rem, 4vw, 3.5rem);
@@ -236,7 +236,7 @@
       line-height: 1.1;
     }
  
-    /* ── commitment section ── */
+    
     .commitment {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -275,7 +275,7 @@
       line-height: 1.8;
     }
  
-    /* ── footer ── */
+   
     footer {
       border-top: 1px solid var(--border);
       padding: 2.5rem 5vw;
@@ -302,7 +302,7 @@
  
     footer a:hover { opacity: .7; }
  
-    /* ── animations ── */
+  
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -320,7 +320,7 @@
 </head>
 <body>
  
-  <!-- ── HERO ── -->
+  
   <header>
     <img class="hero-strip" src="cinturão.jpg" alt="">
     <p class="hero-eyebrow">Est. 2026 — Porto Alegre, BR</p>
@@ -330,7 +330,7 @@
  
   <main>
  
-    <!-- ── ABOUT ── -->
+   
     <section class="about">
       <div class="about-left">
         <h2>FEITO PARA<br>QUEM <em>COMPETE</em></h2>
@@ -341,7 +341,6 @@
       </div>
     </section>
  
-    <!-- ── PRODUCTS ── -->
     <h2 class="products-title">NOSSOS <span>PRODUTOS</span></h2>
  
     <ul>
@@ -368,7 +367,7 @@
       </li>
     </ul>
  
-    <!-- ── COMMITMENT ── -->
+   
     <section class="commitment">
       <div class="commitment-number">01</div>
       <div>
@@ -379,7 +378,7 @@
  
   </main>
  
-  <!-- ── FOOTER ── -->
+
   <footer>
     <p>© 2026 Mattos Apparel. Todos os direitos reservados.<br>por Manoel Mattos e Bernardo Emanuel Libardi</p>
     <p>Contato: <a href="mailto:manoel.mattos010@gmail.com">contato@mattosapparel.com</a></p>
